@@ -5,7 +5,7 @@ export default class Movies extends Component {
   render() { 
     return (
       <>
-      <p>Movies.jsx is working</p>
+      
       </>
       );
   }

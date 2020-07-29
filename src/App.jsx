@@ -6,7 +6,7 @@ export default class App extends Component {
   render() { 
     return (
     <>
-    <p>App.jsx is working</p>
+    <h2>Search for movie here!</h2>
     <SearchBox/>
     </>
     );
