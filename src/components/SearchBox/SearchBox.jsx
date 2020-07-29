@@ -4,12 +4,17 @@ import Movies from "../Movies";
 export default class SearchBox extends Component {
   state = {  
     movieTitle: "",
-    moviePlot: ""
+    moviePlot: "",
+    searchInput: ""
   }
 
 
+  setMovie = (event) => {
+    this.setState({searchInput: event.target.value})
+  }
+
   getMovies = () => {
-    fetch("http://www.omdbapi.com/?apikey=c80b77be&t=Inception")
+    fetch(`http://www.omdbapi.com/?apikey=c80b77be&t=${this.state.searchInput}`)
     .then(response => {
       return response.json();
     })
@@ -17,6 +22,7 @@ export default class SearchBox extends Component {
       this.setState({
         movieTitle: jsonObj.Title,
         moviePlot: jsonObj.Plot
+        // movieData: jsonObj
       })
     })
   
@@ -28,7 +34,8 @@ export default class SearchBox extends Component {
   render() { 
     return (
       <>
-      <button onClick={this.getMovies}>Click for movie plots</button>
+      <input type="text" placeholder="type a movie name" onChange={this.setMovie}></input>
+      <button onClick={this.getMovies}>Click for movie details</button>
       <h2>{this.state.movieTitle}</h2>
       <p>{this.state.moviePlot}</p>
       <Movies/>
