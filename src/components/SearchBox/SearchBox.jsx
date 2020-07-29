@@ -3,7 +3,8 @@ import Movies from "../Movies";
 
 export default class SearchBox extends Component {
   state = {  
-    movieData: ""
+    movieTitle: "",
+    moviePlot: ""
   }
 
 
@@ -13,10 +14,12 @@ export default class SearchBox extends Component {
       return response.json();
     })
     .then(jsonObj => {
-      const Plot = jsonObj.Plot;
-      this.setState({movieData: Plot })
+      this.setState({
+        movieTitle: jsonObj.Title,
+        moviePlot: jsonObj.Plot
+      })
     })
-    // this.setState({ movieData: "some movie data from the API"})
+  
     .catch(error => {
       console.log(error);
     })
@@ -26,7 +29,8 @@ export default class SearchBox extends Component {
     return (
       <>
       <button onClick={this.getMovies}>Click for movie plots</button>
-      <p>{this.state.movieData}</p>
+      <h2>{this.state.movieTitle}</h2>
+      <p>{this.state.moviePlot}</p>
       <Movies/>
       </>
     );
