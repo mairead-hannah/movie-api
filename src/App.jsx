@@ -1,14 +1,15 @@
 import React, { Component } from 'react';
 import SearchBox from "./components/SearchBox"
+import styles from "./App.module.scss"
 
 export default class App extends Component {
   state = {  }
   render() { 
     return (
-    <>
-    <h2>Search for movie here!</h2>
-    <SearchBox/>
-    </>
+    <main className={styles.main}>
+      <h2 className={styles.mainTitle}>Search for a movie here!</h2>
+      <SearchBox/>
+    </main>
     );
   }
 }

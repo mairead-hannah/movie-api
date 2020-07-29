@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
-import Movies from "../Movies";
+import Display from "../Display";
+import Button from "../Button";
+import styles from "./SearchBox.module.scss"
 
 export default class SearchBox extends Component {
   state = {  
@@ -43,14 +45,41 @@ export default class SearchBox extends Component {
   render() { 
     return (
       <>
-      <input type="text" placeholder="type a movie name" onChange={this.setTitle}></input>
-      <input type="text" placeholder="type a year here (optional)" onChange={this.setYear}></input>
-      <button onClick={this.getMovies}>Click for movie details</button>
-      <h2>{this.state.movieTitle}</h2>
-      <p>{this.state.movieYear}</p>
-      <p>{this.state.moviePlot}</p>
-      <img src ={this.state.moviePoster}></img>
-      <Movies/>
+      <section className={styles.inputSection}>
+
+        <input 
+          className={styles.input}
+          type="text" 
+          placeholder="type a movie name" 
+          onChange={this.setTitle}>
+        </input>
+
+        <input 
+          className={styles.input}
+          type="text" 
+          placeholder="type the year (optional)" 
+          onChange={this.setYear}>
+        </input>
+        
+      </section>
+
+
+      <Button 
+        buttonLogic={this.getMovies} 
+        buttonText="Click to get movie details"
+      />
+
+      <section className={styles.outputSection}>
+
+        <Display 
+          displayTitle={this.state.movieTitle}
+          displayYear={this.state.movieYear}
+          displayPlot={this.state.moviePlot}
+          displayPoster={this.state.moviePoster}
+        />
+
+      </section>
+
       </>
     );
   }
