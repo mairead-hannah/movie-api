@@ -13,3 +13,14 @@ export default class App extends Component {
   }
 }
 
+
+
+//API DOCS; 
+// http://www.omdbapi.com/
+
+
+//API KEY:
+//c80b77be
+//http://www.omdbapi.com/?i=tt3896198&apikey=c80b77be
+
+//Api key above is associated with mairead.coyle@nology.io
